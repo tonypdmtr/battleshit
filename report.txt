@@ -1,0 +1,58 @@
+######################################
+
+David Tucker -- dmtucker
+
+Lab section: 3 MW TA: Aimen Al-Refai
+
+Due: 12/4/2011
+
+Lab Partner: Dylan Moon, Kiersten Gray
+
+######################################
+
+Battleshit
+
+Purpose: to make a crappy game
+
+Procedure:
+First we went through the whole process and put it into a flowchart. We would get player 1 and 2 input coordinates for their 4 battleshits with the toggles and interrupt button. Then each player would take turns going back forth inputting coordinates. The game will eventually end after all 4 battleshits of one player gets destroyed.
+
+Algorithms and other data:
+	-If ever the interrupt button is pushed, set the ready flag to 1.
+	-Initialize (register interrupt subroutine, print a greeting) & begin placing shits for p1.
+		-get coordinates of position to placed on
+			-if invalid input, print a message and ask again
+		-make sure a shit isnt already in that position
+			-if one is, print a message then get new coordinates
+		-place shit and repeat 3xs
+			-place shit on players board
+			-update fleet indicator (LEDS)
+		-repeat for player 2
+			-switch player indicator (LCD LINE 1)
+	-enter game loop:
+		-fire a shit
+			-get coordinates of position to be fired on
+				-if invalid input, print a message and ask again
+			-check if there is a shit on the other players board at that position
+				-if there is, print a message and remove it
+					-decrease shit count
+					-remove shit off board
+					-update fleet indicator (LEDS)
+				-if there isnt, print a message
+		-see if anyone died (has 0 shits left)
+			-if yes, print a message & exit game loop
+				-print a game over message and wait for the interrupt button to restart
+		-switch players
+			-switch player indicator (LCD LINE 1)
+		-repeat
+        
+Obstacles:
+        The hardest part of this lab for me was debugging. What helped most was putting in debug messages that print to the console.
+
+More:
+	none
+        
+Conclusion:
+        The most important concepts demonstrated in the lab were figuring out how to create a functional application of assembly language.
+	It turned out to be more fun then I thought it might be because of the interaction between the software and hardware.
+	However, I also learned a great deal on the value of backing up data! Especially as you work.
