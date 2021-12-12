@@ -1,4 +1,4 @@
-                    org       *
+                    #ROM      *
                     #Uses     v2_18g3.inc
 
 ;*******************************************************************************
@@ -16,59 +16,59 @@ boardRows           fcb       4
 boardCols           fcb       4
 p1ships             fcb       0
 p2ships             fcb       0
-p1board             @space    16
-p2board             @space    16
-filler              @asciz    '                '
-title               @asciz    '   BATTLESHIP   '
-subtitle            @asciz    ' A crappy game. '
-p1                  @asciz    '    Player 1    '
-p2                  @asciz    '    Player 2    '
-place               @asciz    'Place a ship.   '
-enter               @asciz    'Enter coords.   '
-shoot               @asciz    'Shoot a ship.   '
-over                @asciz    '   Game over.   '
-invalid             @asciz    'invalid position'
-occupied            @asciz    'already occupied'
-available           @asciz    '   Nice ship!   '
-hit                 @asciz    '      hit!      '
-miss                @asciz    'miss...         '
-win                 @asciz    "You're the ship."
-loss                @asciz    "You're crappy.  "
+p1board             rmb       16
+p2board             rmb       16
+filler              fcs       '                '
+title               fcs       '   BATTLESHIP   '
+subtitle            fcs       ' A crappy game. '
+p1                  fcs       '    Player 1    '
+p2                  fcs       '    Player 2    '
+place               fcs       'Place a ship.   '
+enter               fcs       'Enter coords.   '
+shoot               fcs       'Shoot a ship.   '
+over                fcs       '   Game over.   '
+invalid             fcs       'invalid position'
+occupied            fcs       'already occupied'
+available           fcs       '   Nice ship!   '
+hit                 fcs       '      hit!      '
+miss                fcs       'miss...         '
+win                 fcs       "You're the ship."
+loss                fcs       "You're crappy.  "
 
-DEBUGinterrupt      @asciz    LF,'INTERRUPTION DETECTED',LF
-DEBUGbegin          @asciz    'Begin',LF
-DEBUGstrategize     @asciz    'Strategizing...',LF
-DEBUGfirst          @asciz    '    -1st ship placed',LF
-DEBUGsecond         @asciz    '    -2nd ship placed',LF
-DEBUGthird          @asciz    '    -3rd ship placed',LF
-DEBUGfourth         @asciz    '    -4th ship placed',LF
-DEBUGgetCoord       @asciz    'Getting coordinates...',LF,'    -waiting for input...',LF
-DEBUGgotCoord       @asciz    '    -input received',LF,'    -mapping to board position...',LF
-DEBUGgotError       @asciz    '    -ERROR detected: invalid input received',LF
-DEBUGmask           @asciz    '    -current mask: '
-DEBUGrow            @asciz    '    -current row:  '
-DEBUGcol            @asciz    '    -current col:  '
-DEBUGgotRow         @asciz    '    -ROW: '
-DEBUGgotCol         @asciz    '    -COL: '
-DEBUGgotKey         @asciz    '    -KEY: '
-DEBUGplaceShit      @asciz    'Placing ships...',LF
-DEBUGplaceError     @asciz    '    -ERROR detected: invalid ship position (already taken)',LF
-DEBUGswitch         @asciz    'Switching players...',LF
-DEBUGfire           @asciz    'Firing at ships...',LF
-DEBUGshootP1        @asciz    '    -shooting at player 1',LF
-DEBUGshootP2        @asciz    '    -shooting at player 2',LF
-DEBUGhit            @asciz    '    -hit',LF
-DEBUGmiss           @asciz    '    -miss',LF
-DEBUGupdate         @asciz    'Updating the fleets...',LF
-DEBUGships          @asciz    '    -ships: '
-DEBUGfleet          @asciz    '    -fleet status: '
-DEBUGinit           @asciz    '    -detected p1 initial setup, suppressing p2 status',LF
-DEBUGstatus         @asciz    '    -indicating fleet status',LF
-DEBUGcheck          @asciz    'Checking for a winner...',LF
-DEBUGalive          @asciz    '    -alive',LF
-DEBUGdead           @asciz    '    -DEAD!',LF
-DEBUGwait           @asciz    'Waiting through a delay...',LF
-DEBUGdone           @asciz    'Finish',LF
+DEBUGinterrupt      fcs       LF,'INTERRUPTION DETECTED',LF
+DEBUGbegin          fcs       'Begin',LF
+DEBUGstrategize     fcs       'Strategizing...',LF
+DEBUGfirst          fcs       '    -1st ship placed',LF
+DEBUGsecond         fcs       '    -2nd ship placed',LF
+DEBUGthird          fcs       '    -3rd ship placed',LF
+DEBUGfourth         fcs       '    -4th ship placed',LF
+DEBUGgetCoord       fcs       'Getting coordinates...',LF,'    -waiting for input...',LF
+DEBUGgotCoord       fcs       '    -input received',LF,'    -mapping to board position...',LF
+DEBUGgotError       fcs       '    -ERROR detected: invalid input received',LF
+DEBUGmask           fcs       '    -current mask: '
+DEBUGrow            fcs       '    -current row:  '
+DEBUGcol            fcs       '    -current col:  '
+DEBUGgotRow         fcs       '    -ROW: '
+DEBUGgotCol         fcs       '    -COL: '
+DEBUGgotKey         fcs       '    -KEY: '
+DEBUGplaceShit      fcs       'Placing ships...',LF
+DEBUGplaceError     fcs       '    -ERROR detected: invalid ship position (already taken)',LF
+DEBUGswitch         fcs       'Switching players...',LF
+DEBUGfire           fcs       'Firing at ships...',LF
+DEBUGshootP1        fcs       '    -shooting at player 1',LF
+DEBUGshootP2        fcs       '    -shooting at player 2',LF
+DEBUGhit            fcs       '    -hit',LF
+DEBUGmiss           fcs       '    -miss',LF
+DEBUGupdate         fcs       'Updating the fleets...',LF
+DEBUGships          fcs       '    -ships: '
+DEBUGfleet          fcs       '    -fleet status: '
+DEBUGinit           fcs       '    -detected p1 initial setup, suppressing p2 status',LF
+DEBUGstatus         fcs       '    -indicating fleet status',LF
+DEBUGcheck          fcs       'Checking for a winner...',LF
+DEBUGalive          fcs       '    -alive',LF
+DEBUGdead           fcs       '    -DEAD!',LF
+DEBUGwait           fcs       'Waiting through a delay...',LF
+DEBUGdone           fcs       'Finish',LF
 
 ;*******************************************************************************
                     #ROM

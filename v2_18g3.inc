@@ -54,7 +54,7 @@
 ; user hooks into the sram image table.  Everything else is otherwise identical.
 ; Several minor changes were made involving the simulator that were not flagged.
 ; 2.17.1 4 June 99/scp
-; added cli to LCD_CMD and LCD_CHAR since interrupts are used in both.
+; added CLI to LCD_CMD and LCD_CHAR since interrupts are used in both.
 
 ;**************************************************************************
 ; The following should be the first line in your code when you want to run your
@@ -112,18 +112,6 @@ wait                macro     msec
                     !jsr      Wait
                     puld
                     endm
-;-------------------------------------------------------------------------------
-asciz               macro
-                    mset      #
-                    fcs       ~1~
-                    #size     ~label~
-                    endm
-;-------------------------------------------------------------------------------
-space               macro
-                    mset      #
-                    rmb       ~1~
-                    #size     ~label~
-                    endm
 
 ;*******************************************************************************
 ; These equates define i/o devices (as hardware ports) implemented on the 12c
@@ -174,11 +162,11 @@ ISR_JUMP15          next      :temp,3             ; IRQ
 ; Some of the internal 64 registers are defined here.  Their definitions
 ; should be self-evident from the Motorola manuals.
 
-BAUD                equ       REGS+0x2b           ; SCI baud register
-SCCR1               equ       REGS+0x2c           ; SCI control1 register
-SCCR2               equ       REGS+0x2d           ; SCI control2 register
-SCSR                equ       REGS+0x2e           ; SCI status register
-SCDR                equ       REGS+0x2f           ; SCI data register
+BAUD                equ       REGS+0x2B           ; SCI baud register
+SCCR1               equ       REGS+0x2C           ; SCI control1 register
+SCCR2               equ       REGS+0x2D           ; SCI control2 register
+SCSR                equ       REGS+0x2E           ; SCI status register
+SCDR                equ       REGS+0x2F           ; SCI data register
 
 ;*******************************************************************************
 ; Useful system variables
@@ -187,10 +175,10 @@ SCDR                equ       REGS+0x2f           ; SCI data register
 ; Addresses can be found in the linker map file.
 
 #ifndef SIMULATE
-_GETCHR             equ       0x8a0a              ; char getchr(void)
-_PUTCHR             equ       0x89e5              ; char putchar(char c)
+_GETCHR             equ       0x8A0A              ; char getchr(void)
+_PUTCHR             equ       0x89E5              ; char putchar(char c)
 #endif
-_WAIT               equ       0x8a37              ; software timer 4.096 ms per tick, argument in x-reg.
+_WAIT               equ       0x8A37              ; software timer 4.096 ms per tick, argument in x-reg.
 ; build 17:
 
 #ifdef SIMULATE
@@ -283,7 +271,6 @@ Start               proc
 ; This is true of the other input ports as well.
                     clrd
                     clry
-                    clrd
                     sta       switches            ; i: default switch settings
                     sta       leds                ; o: default all-on leds
                     sta       LCD_CMD_REG         ; i/o: default
